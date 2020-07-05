@@ -1,0 +1,9 @@
+.error{
+    visibility: hidden
+}
+
+.delete-btn{
+    background-color: red;
+    /* visibility: hidden; */
+    height: 20px;
+}
