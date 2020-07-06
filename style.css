@@ -1,5 +1,9 @@
-.error{
+.hidden{
     visibility: hidden
+}
+
+.complete{
+    text-decoration: line-through;
 }
 
 .delete-btn{
