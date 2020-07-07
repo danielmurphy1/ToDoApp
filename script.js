@@ -2,7 +2,7 @@ const addBtn = document.getElementById("addBtn");
 const addItem = document.getElementById("addItem");
 const ul = document.getElementById("list");
 const error = document.getElementById("error");
-//let toDoList = [];
+let toDoList = [];
 
 
 
@@ -38,25 +38,33 @@ const addItemToList = function(){
         li.appendChild(liText);
         li.appendChild(deleteButton);
         ul.appendChild(li);
+        
+        
+        
+        //debugger;
+        const toDoItem = {
+            id: listItemID, 
+            text: addItem.value,
+        };
         addItem.value = "";
-
-        //toDoList.push(li);
+        toDoList.push(toDoItem);
           
 
 
          
-         //window.localStorage.setItem('user2', JSON.stringify(toDoList));
+         window.localStorage.setItem('user', JSON.stringify(toDoList));
         
 
-        const deleteBtn = document.getElementById(deleteID); 
-        deleteBtn.addEventListener("click", function(){
+        //const deleteBtn = document.getElementById(deleteID); 
+
+        deleteButton.addEventListener("click", function(){
             li.remove();
-            // const index = toDoList.indexOf(li);
-            // if (index > -1){
-            //     toDoList.splice(index, 1);
-            // }
+            const index = toDoList.indexOf(toDoItem);
+            if (index > -1){
+                toDoList.splice(index, 1);
+            }
             
-            // window.localStorage.setItem('user', JSON.stringify(toDoList));
+            window.localStorage.setItem('user', JSON.stringify(toDoList));
            
 
         });
@@ -73,15 +81,57 @@ const addItemToList = function(){
     
 };
 
-// window.onload = function(){
-//     toDoList = JSON.parse(window.localStorage.getItem('user'));
-//     for (let i = 0; i < toDoList.length; i++){
-//         console.log(toDoList[i]);
-//         let li = document.createElement("li");
-//         li.innerHTML = toDoList[i];
-//         ul.appendChild(li);
-//     }
-// }
+window.onload = function(){
+    toDoList = JSON.parse(window.localStorage.getItem('user')) || [];
+    for (let i = 0; i < toDoList.length; i++){
+        console.log(toDoList[i]);
+        
+        //create an li element based on the current todo element looping through
+
+        let li = document.createElement("li");
+        let listItemID = toDoList[i]["id"];
+        li.setAttribute("id", listItemID);
+        let liText = document.createTextNode(toDoList[i]["text"]);
+        let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            //checkbox.id =  checkboxID;
+            checkbox.name = toDoList[i]["text"];
+            //checkbox.value = checkboxID;
+
+        let deleteButton = document.createElement("button");
+            //deleteButton.setAttribute("id", deleteID);
+            deleteButton.setAttribute("class", "delete-btn");
+            deleteButton.classList.add("hidden");
+            deleteButton.textContent = "Delete";
+
+        //debugger;
+        li.appendChild(checkbox);
+        li.appendChild(liText);
+        li.appendChild(deleteButton);
+        ul.appendChild(li);
+
+        //const deleteBtn = document.getElementById(deleteID); 
+       
+        //debugger;
+        deleteButton.addEventListener("click", function(){
+            li.remove();
+          
+            const index = toDoList.findIndex(item => item.id === listItemID);
+            if (index > -1){
+                toDoList.splice(index, 1);
+            }
+            
+            window.localStorage.setItem('user', JSON.stringify(toDoList));
+           
+
+        });    
+
+        checkbox.addEventListener("click",function(){
+            deleteButton.classList.toggle("hidden");
+            li.classList.toggle("complete");
+        });
+    }
+}
 
 
 addBtn.addEventListener("click", addItemToList);
