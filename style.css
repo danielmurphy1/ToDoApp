@@ -1,3 +1,23 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: antiquewhite;
+    color: crimson;
+    text-align: center;
+    font-family: Helvetica;
+}
+
+ul{
+   list-style: none;
+   padding: 0;
+}
+
+li{
+    display:flex;
+    justify-content: space-between;
+}
+
 .hidden{
     visibility: hidden
 }
@@ -6,7 +26,3 @@
     text-decoration: line-through;
 }
 
-.delete-btn{
-    background-color: red;
-    height: 20px;
-}
