@@ -4,32 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
-    <link href = "style.css" rel = "stylesheet" type = "text/css">
-   
+    <link href="style.css" rel="stylesheet" type="text/css">   
 </head>
+
 <body>
-    <div id = "container">
+    <div id="container">
         <h1>To Do List</h1>
         <h3>Enter Item to Add to Your List</h3>
-        <h3 id = "error" class = "hidden">Cannot Add a Blank Item to the List</h3>
-        <form action="">
-            <input type="text" name="addItem" id="addItem">
-            <button id = "addBtn">Add Item to List</button>
+        <h3 id="error" class="hidden">Cannot Add a Blank Item to the List</h3>
+        <form>
+            <input  id="todo-text-input" type="text" name="todo-text-input">
+            <button id="add-btn">Add Item to List</button>
         </form>
-        <ul id = "list">
-           
-        </ul>
+        <ul id="list"></ul>
     </div>
-
-    
-
-
-
-
-
-
-
-
 
     <script src = "script.js"></script> 
 </body>

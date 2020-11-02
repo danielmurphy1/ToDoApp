@@ -1,23 +1,22 @@
-
-const addBtn = document.getElementById("addBtn");
-const addItem = document.getElementById("addItem");
+const addBtn = document.getElementById("add-btn");
+const todoTextInput = document.getElementById("todo-text-input");
 const ul = document.getElementById("list");
 const error = document.getElementById("error");
 let toDoList = [];
 
 
 addBtn.addEventListener("click",  function(){
-    if (addItem.value === ""){
+    if (todoTextInput.value === ""){
         event.preventDefault();
         error.classList.remove("hidden");
     }else {
         error.classList.add("hidden");
-        console.log(addItem.value);
+        console.log(todoTextInput.value);
         event.preventDefault();
         let li = document.createElement("li");
         let listItemID = Math.random();
         li.setAttribute("id", listItemID);
-        let liText = document.createTextNode(addItem.value);
+        let liText = document.createTextNode(todoTextInput.value);
 
         let checkbox = document.createElement("input");
             checkbox.type = "checkbox";
@@ -37,9 +36,9 @@ addBtn.addEventListener("click",  function(){
         
         const toDoItem = {
             id: listItemID, 
-            text: addItem.value,
+            text: todoTextInput.value,
         };
-        addItem.value = "";
+        todoTextInput.value = "";
         toDoList.push(toDoItem);
           
 
