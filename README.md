@@ -24,4 +24,4 @@ Update: I have revistited this application approximately 3 months after first wr
 
 ### Author
 
-- Dan Murphy. Software Developer
+- Dan Murphy, Full-Stack Developer, https://www.linkedin.com/in/daniel-murphy-055/
